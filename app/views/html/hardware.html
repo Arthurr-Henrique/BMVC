@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware — Registro e Manutenção</title>
+  <link rel="stylesheet" href="/static/css/hardware.css" />
+</head>
+<body>
+  <header class="cabecalho">
+    <div class="envoltorio cabecalho-linha">
+      <div>
+        <span class="indice">02 // REGISTRO DE HARDWARE</span>
+        <h1>Controle de Componentes</h1>
+      </div>
+      <button id="btnTema" class="acao" type="button">Tema: Escuro</button>
+    </div>
+    <p class="descricao-topo">Inclusão, alteração e remoção de itens persistidos em arquivo.</p>
+  </header>
+
+  <main class="envoltorio principal">
+    % if erro:
+    <div class="aviso-erro">{{ erro }}</div>
+    % end
+
+    <section class="bloco-form">
+      % if item_editar:
+      <div class="bloco-cabeca">
+        <span class="rotulo-bloco">EDITAR REGISTRO #{{ item_editar.id }}</span>
+      </div>
+      <form class="grade-form" action="/hardware/editar/{{ item_editar.id }}" method="post">
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" value="{{ item_editar.nome }}" required />
+        </div>
+
+        <div class="campo">
+          <label for="categoria">Categoria</label>
+          <select id="categoria" name="categoria">
+            <option value="armazenamento" {{ 'selected' if item_editar.categoria == 'armazenamento' else '' }}>Armazenamento</option>
+            <option value="processamento" {{ 'selected' if item_editar.categoria == 'processamento' else '' }}>Processamento</option>
+            <option value="perifericos" {{ 'selected' if item_editar.categoria == 'perifericos' else '' }}>Periféricos</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="preco">Preço (R$)</label>
+          <input id="preco" name="preco" type="text" value="{{ '%.2f' % item_editar.preco }}" required />
+        </div>
+
+        <div class="campo campo-amplo">
+          <label for="descricao">Descrição</label>
+          <input id="descricao" name="descricao" type="text" value="{{ item_editar.descricao }}" required />
+        </div>
+
+        <div class="linha-botoes campo-amplo">
+          <button class="acao acao-principal" type="submit">Salvar Alteração</button>
+          <a class="acao" href="/hardware">Cancelar</a>
+        </div>
+      </form>
+      % else:
+      <div class="bloco-cabeca">
+        <span class="rotulo-bloco">NOVO REGISTRO</span>
+      </div>
+      <form class="grade-form" action="/hardware/criar" method="post">
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" placeholder="Ex.: Fonte 650W 80 Plus" required />
+        </div>
+
+        <div class="campo">
+          <label for="categoria">Categoria</label>
+          <select id="categoria" name="categoria">
+            <option value="armazenamento">Armazenamento</option>
+            <option value="processamento">Processamento</option>
+            <option value="perifericos">Periféricos</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="preco">Preço (R$)</label>
+          <input id="preco" name="preco" type="text" placeholder="Ex.: 389.00" required />
+        </div>
+
+        <div class="campo campo-amplo">
+          <label for="descricao">Descrição</label>
+          <input id="descricao" name="descricao" type="text" placeholder="Especificação técnica resumida do componente." required />
+        </div>
+
+        <div class="linha-botoes campo-amplo">
+          <button class="acao acao-principal" type="submit">Registrar Item</button>
+        </div>
+      </form>
+      % end
+    </section>
+
+    <div class="controles">
+      <div class="filtros" role="group" aria-label="Filtrar por categoria">
+        <button class="filtro-btn ativo" data-categoria="todos" type="button">Todos</button>
+        <button class="filtro-btn" data-categoria="armazenamento" type="button">Armazenamento</button>
+        <button class="filtro-btn" data-categoria="processamento" type="button">Processamento</button>
+        <button class="filtro-btn" data-categoria="perifericos" type="button">Periféricos</button>
+      </div>
+      <span id="contadorItens" class="contagem">Exibindo {{ len(itens) }} item(ns)</span>
+    </div>
+
+    <section id="gradeHardware" class="lista-pecas">
+      % for item in itens:
+      <article class="peca" data-categoria="{{ item.categoria }}">
+        <div class="peca-cabeca">
+          <span class="cat-nome">{{ item.categoria.upper() }} · #{{ item.id }}</span>
+          <strong class="valor">{{ item.preco_formatado() }}</strong>
+        </div>
+        <h2>{{ item.nome }}</h2>
+        <p>{{ item.descricao }}</p>
+        <div class="acoes-peca">
+          <a class="acao" href="/hardware/editar/{{ item.id }}">Editar</a>
+          <form class="form-inline" action="/hardware/excluir/{{ item.id }}" method="post">
+            <button class="acao acao-perigo btn-confirmar-exclusao" type="submit">Excluir</button>
+          </form>
+        </div>
+      </article>
+      % end
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="envoltorio">
+      <span>FireStore • BMVC II</span>
+    </div>
+  </footer>
+
+  <script src="/static/js/hardware.js"></script>
+</body>
+</html>

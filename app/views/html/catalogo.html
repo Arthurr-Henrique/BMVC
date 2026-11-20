@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo — HardwareStore</title>
+  <link rel="stylesheet" href="/static/css/catalogo.css" />
+</head>
+<body>
+  <header class="cabecalho">
+    <div class="envoltorio cabecalho-linha">
+      <div>
+        <span class="indice">01 // CATALOGO GERAL</span>
+        <h1>HardwareStore</h1>
+      </div>
+      <button id="btnTema" class="acao" type="button">Tema: Escuro</button>
+    </div>
+    <p class="descricao-topo">Relação de peças, unidades de memória e periféricos disponíveis na bancada.</p>
+  </header>
+
+  <main class="envoltorio principal">
+    <div class="controles">
+      <div class="filtros" role="group" aria-label="Filtrar por categoria">
+        <button class="filtro-btn ativo" data-categoria="todos" type="button">Todos</button>
+        <button class="filtro-btn" data-categoria="armazenamento" type="button">Armazenamento</button>
+        <button class="filtro-btn" data-categoria="processamento" type="button">Processamento</button>
+        <button class="filtro-btn" data-categoria="perifericos" type="button">Periféricos</button>
+      </div>
+      <span id="contadorItens" class="contagem">Exibindo 6 produto(s)</span>
+    </div>
+
+    <section id="gradeProdutos" class="lista-pecas">
+      <article class="peca" data-categoria="armazenamento">
+        <div class="peca-cabeca">
+          <span class="cat-nome">ARMAZENAMENTO</span>
+          <strong class="valor">R$ 449,90</strong>
+        </div>
+        <h2>SSD NVMe 1TB Gen4</h2>
+        <p>Leitura sequencial até 6.000 MB/s em formato M.2 2280 para sistema operacional e jogos.</p>
+      </article>
+
+      <article class="peca" data-categoria="armazenamento">
+        <div class="peca-cabeca">
+          <span class="cat-nome">ARMAZENAMENTO</span>
+          <strong class="valor">R$ 379,00</strong>
+        </div>
+        <h2>HD SATA 2TB 7200 RPM</h2>
+        <p>Unidade mecânica interna de 3,5" voltada para arquivos pesados e cópias de segurança.</p>
+      </article>
+
+      <article class="peca" data-categoria="processamento">
+        <div class="peca-cabeca">
+          <span class="cat-nome">PROCESSAMENTO</span>
+          <strong class="valor">R$ 1.189,00</strong>
+        </div>
+        <h2>Processador Ryzen 7 Octa-Core</h2>
+        <p>8 núcleos físicos e 16 threads para compilação, simulações e cargas contínuas.</p>
+      </article>
+
+      <article class="peca" data-categoria="processamento">
+        <div class="peca-cabeca">
+          <span class="cat-nome">PROCESSAMENTO</span>
+          <strong class="valor">R$ 269,90</strong>
+        </div>
+        <h2>Memória RAM 16GB DDR4 3200MHz</h2>
+        <p>Módulo DIMM com dissipador metálico simples e latência estável.</p>
+      </article>
+
+      <article class="peca" data-categoria="perifericos">
+        <div class="peca-cabeca">
+          <span class="cat-nome">PERIFERICOS</span>
+          <strong class="valor">R$ 299,00</strong>
+        </div>
+        <h2>Teclado Mecânico ABNT2</h2>
+        <p>Layout ABNT2, switches táteis, iluminação branca fixa e cabo USB-C removível.</p>
+      </article>
+
+      <article class="peca" data-categoria="perifericos">
+        <div class="peca-cabeca">
+          <span class="cat-nome">PERIFERICOS</span>
+          <strong class="valor">R$ 699,00</strong>
+        </div>
+        <h2>Monitor IPS 24" Full HD</h2>
+        <p>Painel IPS 1920x1080 a 100Hz com ângulos amplos para texto e planilhas.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="envoltorio">
+      <span>HardwareStore • BMVC I</span>
+    </div>
+  </footer>
+
+  <script src="/static/js/catalogo.js"></script>
+</body>
+</html>

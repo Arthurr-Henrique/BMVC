@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nome": "SSD NVMe 1TB Gen4",
+    "categoria": "armazenamento",
+    "descricao": "Leitura até 6.000 MB/s, M.2 2280.",
+    "preco": 449.9
+  },
+  {
+    "id": 3,
+    "nome": "Processador Ryzen 7 Octa-Core",
+    "categoria": "processamento",
+    "descricao": "8 núcleos / 16 threads para alto desempenho.",
+    "preco": 1189.0
+  },
+  {
+    "id": 4,
+    "nome": "Teclado Mecânico ABNT2",
+    "categoria": "perifericos",
+    "descricao": "Switches táteis e cabo USB-C removível.",
+    "preco": 299.0
+  }
+]

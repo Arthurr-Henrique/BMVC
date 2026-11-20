@@ -21,12 +21,30 @@ def helper(info=None):
 
 #-----------------------------------------------------------------------------
 # Suas rotas aqui:
-
+# Nível 1
 @app.route('/')
-@app.route('/firestore')
-def firestore():
-    return ctl.render('firestore')
+@app.route('/catalogo')
+def catalogo():
+    return ctl.render('catalogo')
 
+#Nível 2
+@app.route('/hardware')
+def hardware_index():
+    return ctl.hardware()
+
+@app.route('/hardware/criar', method='POST')
+def hardware_criar():
+    return ctl.hardware_criar(request.forms)
+
+@app.route('/hardware/editar/<id_item:int>', method=['GET', 'POST'])
+def hardware_editar(id_item):
+    if request.method == 'POST':
+        return ctl.hardware_atualizar(id_item, request.forms)
+    return ctl.hardware_form_editar(id_item)
+
+@app.route('/hardware/excluir/<id_item:int>', method='POST')
+def hardware_excluir(id_item):
+    return ctl.hardware_excluir(id_item)
 
 #-----------------------------------------------------------------------------
 

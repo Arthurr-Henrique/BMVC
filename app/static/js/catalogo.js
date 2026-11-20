@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const btnTema = document.getElementById("btnTema");
   const botoesFiltro = document.querySelectorAll(".filtro-btn");
-  const cards = document.querySelectorAll(".card");
+  const pecas = document.querySelectorAll(".peca");
   const contadorItens = document.getElementById("contadorItens");
 
   if (btnTema) {
     btnTema.addEventListener("click", () => {
-      document.body.classList.toggle("tema-claro");
+      const claroAtivo = document.body.classList.toggle("tema-claro");
+      btnTema.textContent = claroAtivo ? "Tema: Claro" : "Tema: Escuro";
     });
   }
 
@@ -18,9 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const categoria = botao.dataset.categoria;
       let visiveis = 0;
 
-      cards.forEach((card) => {
-        const pertence = categoria === "todos" || card.dataset.categoria === categoria;
-        card.style.display = pertence ? "" : "none";
+      pecas.forEach((peca) => {
+        const pertence = categoria === "todos" || peca.dataset.categoria === categoria;
+        peca.style.display = pertence ? "" : "none";
         if (pertence) visiveis += 1;
       });
 
