@@ -4,8 +4,7 @@ from bottle import template
 class Application():
 
     def __init__(self):
-        self.pages = {
-        }
+        self.pages = {'firestore': self.devhub, 'helper': self.helper}
 
 
     def render(self,page):
@@ -15,3 +14,7 @@ class Application():
 
     def helper(self):
         return template('app/views/html/helper')
+    
+    
+    def devhub(self):
+        return template('app/views/html/firestore')  

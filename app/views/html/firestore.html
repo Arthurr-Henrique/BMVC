@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FireStore — Catálogo de Hardware</title>
+  <link rel="stylesheet" href="/static/css/firestore.css" />
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-flex">
+      <div>
+        <span class="selo">BMVC I • Vitrine Estática</span>
+        <h1>FireStore</h1>
+        <p class="subtitulo">Catálogo de componentes e periféricos com filtro rápido por categoria.</p>
+      </div>
+      <button id="btnTema" class="btn btn-secundario" type="button">Alternar Tema</button>
+    </div>
+  </header>
+
+  <main class="container conteudo">
+    <section class="barra-filtros">
+      <div class="botoes-filtro">
+        <button class="filtro-btn ativo" data-categoria="todos" type="button">Todos</button>
+        <button class="filtro-btn" data-categoria="armazenamento" type="button">Armazenamento</button>
+        <button class="filtro-btn" data-categoria="processamento" type="button">Processamento</button>
+        <button class="filtro-btn" data-categoria="perifericos" type="button">Periféricos</button>
+      </div>
+      <span id="contadorItens" class="contador">Exibindo 6 produtos</span>
+    </section>
+
+    <section id="gradeProdutos" class="grade-produtos">
+      <article class="card" data-categoria="armazenamento">
+        <span class="tag">Armazenamento</span>
+        <h2>SSD NVMe 1TB Gen4</h2>
+        <p>Leitura de até 6.000 MB/s, formato M.2 2280 para sistema e jogos.</p>
+        <strong class="preco">R$ 449,90</strong>
+      </article>
+
+      <article class="card" data-categoria="armazenamento">
+        <span class="tag">Armazenamento</span>
+        <h2>HD SATA 2TB 7200 RPM</h2>
+        <p>Armazenamento interno de alta capacidade para arquivos e backups.</p>
+        <strong class="preco">R$ 379,00</strong>
+      </article>
+
+      <article class="card" data-categoria="processamento">
+        <span class="tag">Processamento</span>
+        <h2>Processador Ryzen 7 Octa-Core</h2>
+        <p>8 núcleos e 16 threads com alto desempenho para multitarefa e compilação.</p>
+        <strong class="preco">R$ 1.189,00</strong>
+      </article>
+
+      <article class="card" data-categoria="processamento">
+        <span class="tag">Processamento</span>
+        <h2>Memória RAM 16GB DDR4 3200MHz</h2>
+        <p>Módulo com dissipador em alumínio e baixa latência.</p>
+        <strong class="preco">R$ 269,90</strong>
+      </article>
+
+      <article class="card" data-categoria="perifericos">
+        <span class="tag">Periféricos</span>
+        <h2>Teclado Mecânico ABNT2</h2>
+        <p>Switches táteis, iluminação branca e cabo USB-C removível.</p>
+        <strong class="preco">R$ 299,00</strong>
+      </article>
+
+      <article class="card" data-categoria="perifericos">
+        <span class="tag">Periféricos</span>
+        <h2>Monitor IPS 24" Full HD</h2>
+        <p>Taxa de atualização de 100Hz e bordas finas para produtividade.</p>
+        <strong class="preco">R$ 699,00</strong>
+      </article>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>FireStore — Página estática servida via BMVC / Bottle com CSS e JS ativos.</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/firestore.js"></script>
+</body>
+</html>
